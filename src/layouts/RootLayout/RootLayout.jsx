@@ -25,9 +25,6 @@ const RootLayout = () => {
             <span>Alpaca AI</span>
           </Link>
           <div className="user">
-            <SignedOut>
-              <SignInButton />
-            </SignedOut>
             <SignedIn>
               <UserButton />
             </SignedIn>

@@ -1,7 +1,21 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import "./DashboardLayout.css";
+import { useEffect } from "react";
+import { useAuth } from "@clerk/clerk-react";
 
 const DashboardLayout = () => {
+  const { userId, isLoaded } = useAuth();
+  const navigate = useNavigate();
+
+  //if user not signed in do not open chat page but redirect to login
+  useEffect(() => {
+    if (isLoaded && !userId) {
+      navigate("/sign-in");
+    }
+  }, [isLoaded, userId, navigate]);
+
+  if (!isLoaded) return "Loading...";
+
   return (
     <div className="dashboardLayout">
       <div className="menu">MENU</div>
