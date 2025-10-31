@@ -89,7 +89,7 @@
     .orbital{
         position : absolute;
         bottom : 0;
-        left: 0;
+        left: -8%;
         opacity: 0.1;
         animation: 100s linear infinite rotateOrbital;
     }

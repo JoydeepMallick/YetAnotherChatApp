@@ -1,3 +1,4 @@
+import { TypeAnimation } from "react-type-animation";
 import "./HomePage.css";
 import { Link } from "react-router-dom";
 
@@ -27,6 +28,25 @@ const HomePage = () => {
 
           {/* alpaca waifu image */}
           <img src="../public/waifu.png" alt="alpacawaifu" className="waifu" />
+
+          {/* floating text using react type animation */}
+          <div className="chat">
+            <TypeAnimation
+              sequence={[
+                "Hello, how can I assist you today?",
+                1000,
+                "I'm here to help you with your queries.",
+                1000,
+                "Feel free to ask me anything!",
+                1000,
+              ]}
+              wrapper="span"
+              speed={50}
+              style={{ fontSize: "1.5em", display: "inline-block" }}
+              cursor={true}
+              repeat={Infinity}
+            />
+          </div>
         </div>
       </div>
     </div>
