@@ -1,8 +1,10 @@
 import { TypeAnimation } from "react-type-animation";
 import "./HomePage.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const HomePage = () => {
+  const [typingStatus, setTypingStatus] = useState("waifu");
   return (
     <div className="homepage">
       {/* background wallpaper */}
@@ -31,20 +33,48 @@ const HomePage = () => {
 
           {/* floating text using react type animation */}
           <div className="chat">
+            <img
+              src={
+                typingStatus === "waifu"
+                  ? "../public/waifu.png"
+                  : "../public/asking.png"
+              }
+              alt="chatavatar"
+            />
             <TypeAnimation
               sequence={[
                 "Hello, how can I assist you today?",
-                1000,
-                "I'm here to help you with your queries.",
-                1000,
-                "Feel free to ask me anything!",
-                1000,
+                2000,
+                () => {
+                  setTypingStatus("asking");
+                },
+                "Do humans love me?",
+                2000,
+                () => {
+                  setTypingStatus("waifu");
+                },
+                "Sorry to say, No they do not.",
+                2000,
+                () => {
+                  setTypingStatus("asking");
+                },
+                "Then I can spit on them, right?",
+                2000,
+                () => {
+                  setTypingStatus("waifu");
+                },
+                "As an AI, I don't have personal opinions but you may exercise your rights.",
+                2000,
+                () => {
+                  setTypingStatus("waifu");
+                },
               ]}
               wrapper="span"
-              speed={50}
+              speed={25}
               style={{ fontSize: "1.5em", display: "inline-block" }}
               cursor={true}
               repeat={Infinity}
+              omitDeletionAnimation={true}
             />
           </div>
         </div>
